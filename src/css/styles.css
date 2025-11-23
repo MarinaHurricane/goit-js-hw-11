@@ -7,12 +7,43 @@
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+.html-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1128px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: row;
+  flex-basis: calc((100% - 48px) / 3);
+  height: 200px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  max-height: 200px;
+  height: 100%;
+}
+
+.description {
+  width: 360px;
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 20px;
+
+}
+
+.img-descr-title {
+  font-family: 'Monserrat', san-seriff;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
