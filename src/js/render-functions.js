@@ -1,21 +1,20 @@
+  import { refs } from './refs.js'
   import SimpleLightbox from "simplelightbox";
   import "simplelightbox/dist/simple-lightbox.min.css";
-  // import { refs } from '/src/main.js'
- 
+  
+  export const lightbox = new SimpleLightbox(".js-gallery a", {
+    captions: true,
+    captionsData: "alt",
+    captionDelay: 250,
+    captionPosition: "bottom"
+  });
 
-
-  // const refs = {
-  //   form: document.querySelector('.form'),
-  //   input: document.querySelector('input[name="search-text"]'),
-  //   gallery: document.querySelector('.js-gallery'),
-  // };
-
-  export function createGallery(images, container) {
-    container.innerHTML = images.map(image => (
+  export function createGallery(images) {
+    refs.gallery.innerHTML = images.map(image => (
       `<li class="gallery-item">
       <div class="gallery-container">
       <div class="gallery">
-        <a href="${image.webformatURL}"><img src="${image.largeImageURL}" alt="${image.tags}" title=""/></a>
+        <a class="preview" href="${image.largeImageURL}"><img src="${image.webformatURL}" alt="${image.tags}" title=""/></a>
     </div>
 
     <div class="description">
@@ -37,42 +36,22 @@
         </div>
     </div>
     </div>
-
     </li>`
 
     )).join('');
-
-  
-
-    const lightbox = new SimpleLightbox(".js-gallery a", {
-      captions: true,
-      captionsData: "alt",
-      captionDelay: 250,
-      captionPosition: "bottom"})
+    lightbox.refresh();
   };
 
 
+  export function clearGallery() {
+    refs.gallery.innerHTML = '';
+  };
 
-//  const list = document.querySelector('.js-gallery');
-//   console.log(createGallery('sun'));
+  export function showLoader() {
+    refs.loader.classList.remove('hidden');
+  };
 
-  // function clearGallery()
+  export function hideLoader() {
+    refs.loader.classList.add('hidden');
+  };
 
-  // function showLoader()
-
-  // function hideLoader()
-
-
-//   const lightbox = new SimpleLightbox(".gallery a", {
-//     captions: true,
-//     captionsData: "alt",
-//     captionDelay: 250,
-//     captionPosition: "bottom"
-//   });
-
-//   iziToast.show({
-//     message: `❌ Rejected promise in ${delay}ms`,
-//     color: 'red',
-//     position: 'topRight',
-//     messageSize: '20',
-//   });
